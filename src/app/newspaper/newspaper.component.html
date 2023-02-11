@@ -1,0 +1,16 @@
+<div>
+  <p>Idealne zarobki by zrobić dalszą część zadania :)</p>
+  <div style="display: inline">
+    <div *ngFor="let info of arrayWithNameOfPhotos; odd as o">
+      <img
+        [src]="info.img"
+        width="200"
+        height="50"
+        alt="{{ info.img }}"
+        [style.float]="o ? '' : 'left'"
+        style="display: block; cursor: pointer"
+        (click)="clickFotoHandler(info.name)"
+      />
+    </div>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+<div>
+  <h2 style="text-align: end">{{ date | date : "medium" }}</h2>
+  <div [ngSwitch]="showingPage">
+    <div *ngSwitchCase="'input'">
+      <h2>
+        Wpisz swoje zarobki z poprzedniego roku:
+        <input
+          [(ngModel)]="earnings"
+          type="password"
+          name="inp"
+          pattern="^\d+(?:\.\d*)?$"
+          [value]="earnings"
+          minlength="0"
+          (input)="changeInput($event)"
+        />EUR
+      </h2>
+      <!-- (ngModelChange)="changeInput($event)" -->
+      {{ earnings }}
+      <ng-container *ngIf="earnings">
+        <h2>
+          I tak widzimy, że Twoje zarobki to:
+          {{ earnings | currency : "EUR" : "symbol" : "1.1-3" }}
+        </h2>
+      </ng-container>
+    </div>
+
+    <div *ngSwitchCase="'newspaper'">
+      <app-newspaper
+        (selectedNewspaper)="selectedNewspaper = $event"
+        (changeView)="showingPage = $event"
+      ></app-newspaper>
+    </div>
+
+    <div *ngSwitchCase="'years'">
+      <app-newspapers-years
+        [newspaperName]="selectedNewspaper"
+        (changeView)="showingPage = $event"
+      ></app-newspapers-years>
+    </div>
+  </div>
+</div>

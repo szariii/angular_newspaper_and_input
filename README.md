@@ -1,4 +1,6 @@
-# Xml
+# angular_newspaper_and_input
+
+Website using input and pipe. If you put 666.666 in input you can see next site site with some newspapers which you can click and check years and titles of  some atari newspapers.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.1.
 
